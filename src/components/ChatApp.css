@@ -1,0 +1,234 @@
+.chat-app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  background: #dfe7f3;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background: #f7f9fc;
+  border-right: 1px solid #d7deea;
+}
+
+.sidebar-top {
+  height: 68px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e4eaf3;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2a8cff, #6b5cff 55%, #9b4dff);
+}
+
+.sidebar-brand strong {
+  display: block;
+  font-size: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.sidebar-brand span {
+  display: block;
+  font-size: 0.75rem;
+  color: #6b7385;
+}
+
+.new-chat-btn {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 12px;
+  background: #e8f2ff;
+  color: #1d6fdc;
+  font-size: 1.35rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.new-chat-btn:hover {
+  background: #d7e9ff;
+  transform: translateY(-1px);
+}
+
+.chat-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.sidebar-empty {
+  margin: 24px 12px;
+  color: #6b7385;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.chat-list-item {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.chat-list-item:hover,
+.chat-list-item.active {
+  background: #eaf2ff;
+}
+
+.chat-list-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #7aa7ff, #8b7cff);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.chat-list-meta {
+  min-width: 0;
+}
+
+.chat-list-meta strong,
+.chat-list-meta span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chat-list-meta strong {
+  font-size: 0.92rem;
+  color: #121826;
+}
+
+.chat-list-meta span {
+  margin-top: 2px;
+  font-size: 0.78rem;
+  color: #6b7385;
+}
+
+.logout-btn {
+  margin: 12px;
+  height: 42px;
+  border: 1px solid #d7deea;
+  border-radius: 12px;
+  background: #fff;
+  color: #4b5568;
+  font: inherit;
+  cursor: pointer;
+}
+
+.chat-placeholder {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(42, 140, 255, 0.12), transparent 40%),
+    #e8eef7;
+}
+
+.placeholder-card {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 28px 32px;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(30, 50, 90, 0.08);
+  animation: rise 0.45s ease;
+}
+
+.placeholder-card h2 {
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.placeholder-card p {
+  margin: 8px 0 18px;
+  color: #6b7385;
+}
+
+.placeholder-card button {
+  height: 42px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2a8cff, #4f6cff);
+  color: #fff;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.poll-toast {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  max-width: min(420px, calc(100vw - 32px));
+  background: #121826;
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  z-index: 50;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.poll-toast button {
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 800px) {
+  .chat-app {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-app.has-active-chat .sidebar {
+    display: none;
+  }
+
+  .chat-app:not(.has-active-chat) .chat-placeholder {
+    display: none;
+  }
+}
